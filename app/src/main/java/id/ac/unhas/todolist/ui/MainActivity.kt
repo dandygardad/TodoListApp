@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
 
     override fun onViewClicked(todoList: Todolist) {
         resetSearchView()
-        val intent = Intent(this@MainActivity, CreateActivity::class.java)
+        val intent = Intent(this@MainActivity, UpdateActivity::class.java)
         intent.putExtra(Constants.INTENT_OBJECT, todoList)
         startActivityForResult(intent, Constants.INTENT_UPDATE_TODO)
     }
