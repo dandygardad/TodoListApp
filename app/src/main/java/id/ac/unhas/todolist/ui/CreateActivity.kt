@@ -65,17 +65,19 @@ class CreateActivity : AppCompatActivity() {
     }
 
     private fun saveTodo() {
-            val id = if (todoList != null) todoList?.id else null
-            val todo = Todolist(id = id,
-                title = editTitle.text.toString(),
-                todo = editIsi.text.toString(),
-                tempo = tanggal_tempo.text.toString(),
-                tempoWaktu = waktu_tempo.text.toString()
-            )
-            val intent = Intent()
-            intent.putExtra(Constants.INTENT_OBJECT, todo)
-            setResult(RESULT_OK, intent)
-            finish()
+        val sdf = SimpleDateFormat("dd/M/yy HH:mm")
+        val id = if (todoList != null) todoList?.id else null
+        val todo = Todolist(id = id,
+            title = editTitle.text.toString(),
+            todo = editIsi.text.toString(),
+            tempo = tanggal_tempo.text.toString(),
+            tempoWaktu = waktu_tempo.text.toString(),
+            waktuDibuat = sdf.format(Date())
+        )
+        val intent = Intent()
+        intent.putExtra(Constants.INTENT_OBJECT, todo)
+        setResult(RESULT_OK, intent)
+        finish()
     }
 
     private fun showDatePickerDialog() {

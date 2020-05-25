@@ -17,7 +17,7 @@
                 android:padding="7dp"
                 android:textAlignment="textEnd"
                 android:textSize="12sp"
-                android:id="@+id/waktu_dibuat"/>
+                android:id="@+id/view_waktu_dibuat"/>
 
             <TextView
                 android:layout_width="match_parent"

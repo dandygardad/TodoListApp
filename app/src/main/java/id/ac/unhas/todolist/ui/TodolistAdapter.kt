@@ -35,6 +35,7 @@ class TodolistAdapter(todoEvents: TodoEvents) : RecyclerView.Adapter<TodolistAda
             itemView.isi_todo.text = todo.todo
             itemView.view_jatuh_tanggal.text = todo.tempo
             itemView.view_jatuh_waktu.text = todo.tempoWaktu
+            itemView.view_waktu_dibuat.text = todo.waktuDibuat
 
             itemView.delete_button.setOnClickListener {
                 listener.onDeleteClicked(todo)

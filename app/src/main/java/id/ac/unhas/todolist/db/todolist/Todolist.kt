@@ -19,5 +19,7 @@ data class Todolist(
     @ColumnInfo(name = "tempo")
     val tempo: String,
     @ColumnInfo(name = "tempoWaktu")
-    val tempoWaktu: String
+    val tempoWaktu: String,
+    @ColumnInfo(name = "waktuDibuat")
+    val waktuDibuat: String
 ) : Parcelable
