@@ -8,4 +8,8 @@
     <string name="search">Search</string>
     <string name="editing">Edit</string>
     <string name="create_todo">Buat</string>
+    <string name="tanggaltempo">Tanggal Jatuh Tempo</string>
+    <string name="waktutempo">Waktu Jatuh Tempo</string>
+    <string name="batas">"Jatuh Tempo : "</string>
+    <string name="tidak_diatur">Tidak diset</string>
 </resources>

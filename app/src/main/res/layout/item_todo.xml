@@ -28,10 +28,30 @@
                 android:text="@string/isinya"
                 android:textColor="@android:color/black" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="13dp"
+                android:text="@string/batas"/>
+
+            <TextView
+                android:id="@+id/view_jatuh_tanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="21dp"
+                android:text="@string/tidak_diatur" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/view_jatuh_waktu"
+                android:paddingLeft="21dp"/>
             <ImageView
                 android:id="@+id/delete_button"
                 android:layout_width="43dp"
                 android:layout_height="34dp"
+                android:layout_marginTop="12dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_delete_black_24dp" />
 

@@ -11,12 +11,32 @@
         android:hint="@string/title"
         android:textStyle="bold"
         android:singleLine="true"
-        android:textSize="25dp"/>
+        android:textSize="25sp"/>
 
     <EditText
         android:id="@+id/editIsi"
         android:layout_width="match_parent"
         android:layout_height="183dp"
+        android:layout_marginTop="20dp"
         android:hint="@string/isiTodo"
         android:inputType="textMultiLine|textFilter" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/waktutempo"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:id="@+id/waktu_tempo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/tanggaltempo"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:id="@+id/tanggal_tempo"/>
+
 </LinearLayout>

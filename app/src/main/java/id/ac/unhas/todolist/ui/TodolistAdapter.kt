@@ -33,6 +33,8 @@ class TodolistAdapter(todoEvents: TodoEvents) : RecyclerView.Adapter<TodolistAda
         fun bind(todo: Todolist, listener: TodoEvents) {
             itemView.title_todo.text = todo.title
             itemView.isi_todo.text = todo.todo
+            itemView.view_jatuh_tanggal.text = todo.tempo
+            itemView.view_jatuh_waktu.text = todo.tempoWaktu
 
             itemView.delete_button.setOnClickListener {
                 listener.onDeleteClicked(todo)
@@ -71,9 +73,9 @@ class TodolistAdapter(todoEvents: TodoEvents) : RecyclerView.Adapter<TodolistAda
         }
     }
 
-    fun setTodos(todoItems: List<Todolist>) {
-        this.todo = todoItems
-        this.filteredTodoList = todoItems
+    fun setTodos(todoList: List<Todolist>) {
+        this.todo = todoList
+        this.filteredTodoList = todoList
         notifyDataSetChanged()
     }
 

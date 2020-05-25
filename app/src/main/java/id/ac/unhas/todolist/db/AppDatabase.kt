@@ -1,9 +1,7 @@
 package id.ac.unhas.todolist.db
 
 import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import id.ac.unhas.todolist.db.todolist.Todolist
 import id.ac.unhas.todolist.db.todolist.TodolistDao
 
