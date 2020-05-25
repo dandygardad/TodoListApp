@@ -13,11 +13,20 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/waktudibuat"
+                android:padding="7dp"
+                android:textAlignment="textEnd"
+                android:textSize="12sp"
+                android:id="@+id/waktu_dibuat"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:id="@+id/title_todo"
                 android:text="@string/title"
                 android:textColor="@android:color/black"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 android:textStyle="bold" />
 
             <TextView

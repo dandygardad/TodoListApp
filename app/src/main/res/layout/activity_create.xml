@@ -23,8 +23,18 @@
 
     <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/judulTanggalTempo"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="37dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="@string/waktutempo"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -33,7 +43,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="37dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
         android:text="@string/tanggaltempo"
         android:textAlignment="center"
         android:textSize="20sp"

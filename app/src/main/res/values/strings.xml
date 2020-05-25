@@ -12,4 +12,6 @@
     <string name="waktutempo">Waktu Tidak Diset</string>
     <string name="batas">"Jatuh Tempo : "</string>
     <string name="tanggaldanwaktu">Tanggal dan Waktu</string>
+    <string name="waktudibuat">Waktu Dibuat</string>
+    <string name="judulTanggalTempo">Tanggal jatuh tempo :</string>
 </resources>
