@@ -28,12 +28,6 @@ class CreateActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create)
 
-        val intent = intent
-        if (intent != null && intent.hasExtra(Constants.INTENT_OBJECT)) {
-            val todoList: Todolist = intent.getParcelableExtra(Constants.INTENT_OBJECT)
-            this.todoList = todoList
-            prePopulateData(todoList)
-        }
         tanggal_tempo.setOnClickListener {
             showDatePickerDialog()
         }
@@ -41,12 +35,7 @@ class CreateActivity : AppCompatActivity() {
         waktu_tempo.setOnClickListener {
             showTimePickerDialog()
         }
-        title = if (todoList != null) getString(R.string.editing) else getString(R.string.create_todo)
-    }
-
-    private fun prePopulateData(todoList: Todolist) {
-        editTitle.setText(todoList.title)
-        editIsi.setText(todoList.todo)
+        title = getString(R.string.create_todo)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -72,7 +61,9 @@ class CreateActivity : AppCompatActivity() {
             todo = editIsi.text.toString(),
             tempo = tanggal_tempo.text.toString(),
             tempoWaktu = waktu_tempo.text.toString(),
-            waktuDibuat = sdf.format(Date())
+            waktuDibuat = sdf.format(Date()),
+            waktuUpdate = "",
+            judulWaktuUpdate = ""
         )
         val intent = Intent()
         intent.putExtra(Constants.INTENT_OBJECT, todo)

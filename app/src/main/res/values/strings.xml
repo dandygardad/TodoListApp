@@ -14,4 +14,7 @@
     <string name="tanggaldanwaktu">Tanggal dan Waktu</string>
     <string name="waktudibuat">Waktu Dibuat</string>
     <string name="judulTanggalTempo">Tanggal jatuh tempo :</string>
+    <string name="waktuupdate">Waktu Update</string>
+    <string name="judulUpdate">Tanggal Update :</string>
+    <string name="judulBuat">Tanggal Dibuat :</string>
 </resources>

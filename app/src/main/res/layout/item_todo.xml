@@ -10,14 +10,53 @@
             android:orientation="vertical"
             android:background="@android:color/holo_green_light">
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/waktudibuat"
-                android:padding="7dp"
-                android:textAlignment="textEnd"
-                android:textSize="12sp"
-                android:id="@+id/view_waktu_dibuat"/>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/time_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_toRightOf="@id/time_created"
+                    android:padding="7dp"
+                    android:textStyle="bold"
+                    android:text="@string/judulUpdate"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/time_created"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="7dp"
+                    android:text="@string/judulBuat"
+                    android:textStyle="bold"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/view_waktu_update"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:layout_toRightOf="@id/view_waktu_dibuat"
+                    android:paddingRight="7dp"
+                    android:text="@string/waktuupdate"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/view_waktu_dibuat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="7dp"
+                    android:paddingBottom="4dp"
+                    android:text="@string/waktudibuat"
+                    android:textSize="13sp" />
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -42,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="13dp"
-                android:text="@string/batas"/>
+                android:text="@string/batas"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/view_jatuh_tanggal"
@@ -56,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/view_jatuh_waktu"
                 android:paddingLeft="21dp"/>
+
             <ImageView
                 android:id="@+id/delete_button"
                 android:layout_width="43dp"
@@ -63,6 +104,5 @@
                 android:layout_marginTop="12dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_delete_black_24dp" />
-
         </LinearLayout>
 </RelativeLayout>
