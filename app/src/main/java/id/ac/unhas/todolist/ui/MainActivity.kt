@@ -96,6 +96,10 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
                 sortingDibuat()
                 return true
             }
+            R.id.sortingJatuhTempo -> {
+                sortingTempo()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -103,6 +107,12 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
     private fun sortingDibuat(){
         todolistViewModel.getSortDibuat().observe(this, Observer {
             todolistAdapter.setSortDibuat(it)
+        })
+    }
+
+    private fun sortingTempo(){
+        todolistViewModel.getSortTempo().observe(this, Observer {
+            todolistAdapter.setSortTempo(it)
         })
     }
 

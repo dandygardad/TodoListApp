@@ -88,6 +88,12 @@ class TodolistAdapter(todoEvents: TodoEvents) : RecyclerView.Adapter<TodolistAda
         notifyDataSetChanged()
     }
 
+    fun setSortTempo(todoList: List<Todolist>){
+        this.todo = todoList
+        this.filteredTodoList = todoList
+        notifyDataSetChanged()
+    }
+
     interface TodoEvents {
         fun onDeleteClicked(todoList: Todolist)
         fun onViewClicked(todoList: Todolist)
