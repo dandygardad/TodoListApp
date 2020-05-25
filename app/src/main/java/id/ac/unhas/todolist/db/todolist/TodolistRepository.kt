@@ -11,15 +11,21 @@ class TodolistRepository(application: Application) {
 
     private val todoListDao: TodolistDao
     private val todos: LiveData<List<Todolist>>
+    private val sortDibuat: LiveData<List<Todolist>>
 
     init {
         val database = AppDatabase.getInstance(application.applicationContext)
         todoListDao = database!!.todoDao()
         todos = todoListDao.getTodos()
+        sortDibuat = todoListDao.getSortDibuat()
     }
 
-    fun getTodos(): LiveData<List<Todolist>> {
+    fun getTodos(): LiveData<List<Todolist>>{
         return todos
+    }
+
+    fun getSortDibuat(): LiveData<List<Todolist>>{
+        return sortDibuat
     }
 
     fun insert(todo: Todolist) = runBlocking {

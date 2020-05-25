@@ -8,6 +8,9 @@ interface TodolistDao {
     @Query("Select * from todo")
     fun getTodos(): LiveData<List<Todolist>>
 
+    @Query("Select * from todo ORDER BY waktuDibuat")
+    fun getSortDibuat() : LiveData<List<Todolist>>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertTodo(todo: Todolist)
 

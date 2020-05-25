@@ -85,7 +85,6 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
                 todolistAdapter.filter.filter(newText)
                 return false
             }
-
         })
         return true
     }
@@ -93,8 +92,18 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.searchtodo -> true
+            R.id.sortingDibuat ->{
+                sortingDibuat()
+                return true
+            }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun sortingDibuat(){
+        todolistViewModel.getSortDibuat().observe(this, Observer {
+            todolistAdapter.setSortDibuat(it)
+        })
     }
 
     override fun onDeleteClicked(todoList: Todolist) {

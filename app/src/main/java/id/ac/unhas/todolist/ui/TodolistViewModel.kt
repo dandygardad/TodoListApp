@@ -10,6 +10,7 @@ class TodolistViewModel(application: Application) : AndroidViewModel(application
 
     private var todolistRepository = TodolistRepository(application)
     private var todos: LiveData<List<Todolist>> = todolistRepository.getTodos()
+    private var sortDibuat: LiveData<List<Todolist>> = todolistRepository.getSortDibuat()
 
     fun insertTodo(todo: Todolist) {
         todolistRepository.insert(todo)
@@ -17,6 +18,10 @@ class TodolistViewModel(application: Application) : AndroidViewModel(application
 
     fun getTodos(): LiveData<List<Todolist>> {
         return todos
+    }
+
+    fun getSortDibuat(): LiveData<List<Todolist>>{
+        return sortDibuat
     }
 
     fun deleteTodo(todo: Todolist) {

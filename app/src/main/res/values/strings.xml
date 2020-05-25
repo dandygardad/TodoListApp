@@ -17,4 +17,6 @@
     <string name="waktuupdate">Waktu Update</string>
     <string name="judulUpdate">Tanggal Update :</string>
     <string name="judulBuat">Tanggal Dibuat :</string>
+    <string name="sortingdibuat">Sort Tanggal Dibuat</string>
+    <string name="sortingjatuhtempo">Sort Tanggal Jatuh Tempo</string>
 </resources>

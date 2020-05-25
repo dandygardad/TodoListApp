@@ -11,4 +11,17 @@
         app:showAsAction="ifRoom"
         android:title="@string/search"
         app:actionViewClass="androidx.appcompat.widget.SearchView" />
+
+    <item
+        android:id="@+id/sortingDibuat"
+        android:icon="@drawable/ic_sort_black_24dp"
+        app:showAsAction="never"
+        android:title="@string/sortingdibuat" />
+
+    <item
+        android:id="@+id/sortingJatuhTempo"
+        android:icon="@drawable/ic_sort_black_24dp"
+        app:showAsAction="never"
+        android:title="@string/sortingjatuhtempo" />
+
 </menu>
