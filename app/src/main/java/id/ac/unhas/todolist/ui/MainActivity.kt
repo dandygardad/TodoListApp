@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.unhas.todolist.R
 import id.ac.unhas.todolist.db.todolist.Todolist
 import id.ac.unhas.todolist.utilities.Constants
+import id.ac.unhas.todolist.utilities.Constants.INSERT
+import id.ac.unhas.todolist.utilities.Constants.UPDATE
 import kotlinx.android.synthetic.main.activity_isi.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,9 +30,9 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        isiActivity.layoutManager = LinearLayoutManager(this)
+        list.layoutManager = LinearLayoutManager(this)
         todolistAdapter = TodolistAdapter(this)
-        isiActivity.adapter = todolistAdapter
+        list.adapter = todolistAdapter
 
         todolistViewModel = ViewModelProvider(this).get(TodolistViewModel::class.java)
         todolistViewModel.getTodos().observe(this, Observer {
@@ -40,47 +42,43 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
         new_fab.setOnClickListener {
             resetSearchView()
             val intent = Intent(this@MainActivity, CreateActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent, INSERT)
         }
     }
 
     override fun onViewClicked(todoList: Todolist) {
         resetSearchView()
         val intent = Intent(this@MainActivity, UpdateActivity::class.java)
-        intent.putExtra(Constants.INTENT_OBJECT, todoList)
-        startActivityForResult(intent, Constants.INTENT_UPDATE_TODO)
+        intent.putExtra(Constants.OBJECT, todoList)
+        startActivityForResult(intent, UPDATE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK) {
-            val todoList = data?.getParcelableExtra<Todolist>(Constants.INTENT_OBJECT)!!
+            val todoList = data?.getParcelableExtra<Todolist>(Constants.OBJECT)!!
             when (requestCode) {
-                Constants.INTENT_CREATE_TODO -> {
+                INSERT -> {
                     todolistViewModel.insertTodo(todoList)
                 }
-                Constants.INTENT_UPDATE_TODO -> {
+                UPDATE -> {
                     todolistViewModel.updateTodo(todoList)
                 }
             }
         }
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.search_menu, menu)
+        menuInflater.inflate(R.menu.menu_main, menu)
         val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        searchView = menu?.findItem(R.id.searchtodo)
-            ?.actionView as SearchView
-        searchView.setSearchableInfo(searchManager
-            .getSearchableInfo(componentName))
+        searchView = menu?.findItem(R.id.searchlist)?.actionView as SearchView
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
         searchView.maxWidth = Integer.MAX_VALUE
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 todolistAdapter.filter.filter(query)
                 return false
             }
-
             override fun onQueryTextChange(newText: String?): Boolean {
                 todolistAdapter.filter.filter(newText)
                 return false
@@ -91,7 +89,7 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.searchtodo -> true
+            R.id.searchlist -> true
             R.id.sortingDibuat ->{
                 sortingDibuat()
                 return true
