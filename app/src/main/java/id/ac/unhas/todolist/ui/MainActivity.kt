@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
         new_fab.setOnClickListener {
             resetSearchView()
             val intent = Intent(this@MainActivity, CreateActivity::class.java)
-            startActivityForResult(intent, Constants.INTENT_CREATE_TODO)
+            startActivity(intent)
         }
     }
 

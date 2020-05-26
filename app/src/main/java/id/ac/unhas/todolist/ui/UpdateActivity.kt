@@ -10,12 +10,10 @@ import android.view.MenuItem
 import id.ac.unhas.todolist.R
 import id.ac.unhas.todolist.db.todolist.Todolist
 import id.ac.unhas.todolist.utilities.Constants
-import kotlinx.android.synthetic.main.activity_create.*
 import kotlinx.android.synthetic.main.activity_create.editIsi
 import kotlinx.android.synthetic.main.activity_create.editTitle
 import kotlinx.android.synthetic.main.activity_create.tanggal_tempo
 import kotlinx.android.synthetic.main.activity_create.waktu_tempo
-import kotlinx.android.synthetic.main.activity_update.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,6 +26,7 @@ class UpdateActivity : AppCompatActivity() {
     private var jam: Int = 0
     private var menit: Int = 0
     private var calendar = Calendar.getInstance()
+    private var timestamp: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +52,7 @@ class UpdateActivity : AppCompatActivity() {
         editTitle.setText(todoList.title)
         editIsi.setText(todoList.todo)
         waktu_tempo.setText(todoList.tempoWaktu)
-        tanggal_tempo.setText(todoList.tempo)
+        tanggal_tempo.setText(todoList.tempoTanggal)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -72,15 +71,18 @@ class UpdateActivity : AppCompatActivity() {
     }
 
     private fun saveTodo() {
-        val sdf = SimpleDateFormat("dd/M/yy HH:mm")
+        val sdf = SimpleDateFormat("dd/M/yyyy HH:mm")
         val id = if (todoList != null) todoList?.id else null
         val todo = todoList?.waktuDibuat?.let {
-            Todolist(id = id,
+            Todolist(
+                id = id,
                 title = editTitle.text.toString(),
                 todo = editIsi.text.toString(),
-                tempo = tanggal_tempo.text.toString(),
+                tempo = timestamp,
+                tempoTanggal = tanggal_tempo.text.toString(),
                 tempoWaktu = waktu_tempo.text.toString(),
                 waktuDibuat = it,
+                waktuDibuatString = todoList!!.waktuDibuatString,
                 waktuUpdate = sdf.format(Date()),
                 judulWaktuUpdate = "Tanggal Update :"
             )
@@ -92,16 +94,19 @@ class UpdateActivity : AppCompatActivity() {
     }
 
     private fun showDatePickerDialog() {
-        hari = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-        bulan = Calendar.getInstance().get(Calendar.MONTH)
-        tahun = Calendar.getInstance().get(Calendar.YEAR)
+        val calendarDate = Calendar.getInstance()
+        hari = calendarDate.get(Calendar.DAY_OF_MONTH)
+        bulan = calendarDate.get(Calendar.MONTH)
+        tahun = calendarDate.get(Calendar.YEAR)
         val datePickerDialog = DatePickerDialog(
             this,
             DatePickerDialog.OnDateSetListener { _, tahun_muncul, bulan_muncul, hari_muncul ->
-                tanggal_tempo.text = ("" + hari_muncul + "/" + (bulan_muncul+1) + "/" + tahun_muncul)
+                tanggal_tempo.text = ("" + hari_muncul + "-" + (bulan_muncul+1) + "-" + tahun_muncul)
                 hari = hari_muncul
                 bulan = bulan_muncul
                 tahun = tahun_muncul
+                calendarDate.set(tahun_muncul,bulan_muncul,hari_muncul)
+                timestamp = calendarDate.getTimeInMillis()
             },
             tahun,
             bulan,

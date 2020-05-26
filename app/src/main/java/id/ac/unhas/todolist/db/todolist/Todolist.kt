@@ -17,11 +17,15 @@ data class Todolist(
     @ColumnInfo(name = "todo")
     val todo: String,
     @ColumnInfo(name = "tempo")
-    val tempo: String,
+    val tempo: Long,
+    @ColumnInfo(name = "tempoTanggal")
+    val tempoTanggal: String,
     @ColumnInfo(name = "tempoWaktu")
     val tempoWaktu: String,
     @ColumnInfo(name = "waktuDibuat")
-    val waktuDibuat: String,
+    val waktuDibuat: Long,
+    @ColumnInfo(name = "waktuDibuatString")
+    val waktuDibuatString: String,
     @ColumnInfo(name = "waktuUpdate")
     val waktuUpdate: String,
     @ColumnInfo(name = "judulWaktuUpdate")

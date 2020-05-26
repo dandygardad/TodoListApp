@@ -33,9 +33,9 @@ class TodolistAdapter(todoEvents: TodoEvents) : RecyclerView.Adapter<TodolistAda
         fun bind(todo: Todolist, listener: TodoEvents) {
             itemView.title_todo.text = todo.title
             itemView.isi_todo.text = todo.todo
-            itemView.view_jatuh_tanggal.text = todo.tempo
+            itemView.view_jatuh_tanggal.text = todo.tempoTanggal
             itemView.view_jatuh_waktu.text = todo.tempoWaktu
-            itemView.view_waktu_dibuat.text = todo.waktuDibuat
+            itemView.view_waktu_dibuat.text = todo.waktuDibuatString
             itemView.view_waktu_update.text = todo.waktuUpdate
             itemView.time_update.text = todo.judulWaktuUpdate
 

@@ -23,6 +23,7 @@ class CreateActivity : AppCompatActivity() {
     private var jam: Int = 0
     private var menit: Int = 0
     private var calendar = Calendar.getInstance()
+    private var timestamp: Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,15 +54,22 @@ class CreateActivity : AppCompatActivity() {
         return true
     }
 
+    private fun currentTimeToLong(): Long {
+        return System.currentTimeMillis()
+    }
+
     private fun saveTodo() {
-        val sdf = SimpleDateFormat("dd/M/yy HH:mm")
+        val sdf = SimpleDateFormat("dd-M-yyyy HH:mm")
         val id = if (todoList != null) todoList?.id else null
-        val todo = Todolist(id = id,
+        val todo = Todolist(
+            id = id,
             title = editTitle.text.toString(),
             todo = editIsi.text.toString(),
-            tempo = tanggal_tempo.text.toString(),
+            tempo = timestamp,
+            tempoTanggal = tanggal_tempo.text.toString(),
             tempoWaktu = waktu_tempo.text.toString(),
-            waktuDibuat = sdf.format(Date()),
+            waktuDibuat = currentTimeToLong(),
+            waktuDibuatString = sdf.format(Date()),
             waktuUpdate = "",
             judulWaktuUpdate = ""
         )
@@ -72,16 +80,19 @@ class CreateActivity : AppCompatActivity() {
     }
 
     private fun showDatePickerDialog() {
-        hari = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-        bulan = Calendar.getInstance().get(Calendar.MONTH)
-        tahun = Calendar.getInstance().get(Calendar.YEAR)
+        val calendarDate = Calendar.getInstance()
+        hari = calendarDate.get(Calendar.DAY_OF_MONTH)
+        bulan = calendarDate.get(Calendar.MONTH)
+        tahun = calendarDate.get(Calendar.YEAR)
         val datePickerDialog = DatePickerDialog(
             this,
             DatePickerDialog.OnDateSetListener { _, tahun_muncul, bulan_muncul, hari_muncul ->
-                tanggal_tempo.text = ("" + hari_muncul + "/" + (bulan_muncul+1) + "/" + tahun_muncul)
+                tanggal_tempo.text = ("" + hari_muncul + "-" + (bulan_muncul+1) + "-" + tahun_muncul)
                 hari = hari_muncul
                 bulan = bulan_muncul
                 tahun = tahun_muncul
+                calendarDate.set(tahun_muncul,bulan_muncul, hari_muncul)
+                timestamp = calendarDate.getTimeInMillis()
             },
             tahun,
             bulan,
@@ -101,4 +112,5 @@ class CreateActivity : AppCompatActivity() {
             }
         TimePickerDialog(this, timePickerDialog, jam, menit,true).show()
     }
+
 }
