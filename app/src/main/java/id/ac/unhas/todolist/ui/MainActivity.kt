@@ -1,8 +1,10 @@
 package id.ac.unhas.todolist.ui
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.SearchManager
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -47,6 +49,27 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
         }
     }
 
+    override fun showDialog(todoList: Todolist){
+        var dialog: AlertDialog
+        val builder = AlertDialog.Builder(this)
+
+        builder.setTitle("Apa anda ingin menghapus ini?")
+        builder.setMessage("Ini tidak bisa kembali jika dihapus..")
+
+        val dialogHapus = DialogInterface.OnClickListener{ _, which ->
+            when(which){
+                DialogInterface.BUTTON_POSITIVE -> onDeleteClicked(todoList)
+                DialogInterface.BUTTON_NEGATIVE -> ""
+            }
+        }
+
+        builder.setPositiveButton("YA", dialogHapus)
+        builder.setNegativeButton("TIDAK", dialogHapus)
+
+        dialog = builder.create()
+        dialog.show()
+    }
+
     private fun noTodo(todoList: List<Todolist>){
         todolistAdapter.setTodos(todoList)
         if (todoList.isEmpty()){
@@ -62,6 +85,8 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
             quotesby.visibility = View.GONE
         }
     }
+
+
 
     override fun onViewClicked(todoList: Todolist) {
         reset()
