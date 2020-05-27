@@ -19,9 +19,6 @@ import java.util.*
 class UpdateActivity : AppCompatActivity() {
 
     private var todoList: Todolist? = null
-    private var jam: Int = 0
-    private var menit: Int = 0
-    private var calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

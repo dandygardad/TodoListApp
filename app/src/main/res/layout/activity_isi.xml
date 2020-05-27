@@ -1,13 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/list"
-        tools:listitem="@layout/item_todo">
-    </androidx.recyclerview.widget.RecyclerView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        tools:listitem="@layout/item_todo" />
+
+    <ImageView
+        android:id="@+id/todophoto"
+        android:layout_width="223dp"
+        android:layout_height="231dp"
+        android:layout_gravity="center"
+        android:src="@drawable/todoclipart"
+        android:layout_marginBottom="250dp"/>
+
+    <TextView
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:fontFamily="@font/helmet"
+        android:text="@string/quote"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="italic"
+        android:layout_marginTop="80dp"
+        android:id="@+id/quotes"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="308dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/helmet"
+        android:id="@+id/quotesby"
+        android:text="@string/byquotes"
+        android:layout_marginTop="200dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/editTitle"
+        android:fontFamily="@font/selawkb"
         android:hint="@string/title"
         android:textStyle="bold"
         android:singleLine="true"
@@ -17,6 +18,7 @@
         android:id="@+id/editIsi"
         android:layout_width="match_parent"
         android:layout_height="183dp"
+        android:fontFamily="@font/selawk"
         android:layout_marginTop="20dp"
         android:hint="@string/isiTodo"
         android:inputType="textMultiLine|textFilter" />
@@ -27,6 +29,7 @@
         android:padding="10dp"
         android:text="@string/judulTanggalTempo"
         android:textAlignment="center"
+        android:fontFamily="@font/selawksb"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -37,6 +40,7 @@
         android:layout_marginTop="12dp"
         android:text="@string/waktutempo"
         android:textAlignment="center"
+        android:fontFamily="@font/selawk"
         android:textSize="20sp"
         android:id="@+id/waktu_tempo"/>
 
@@ -44,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:layout_marginTop="2dp"
+        android:fontFamily="@font/selawk"
         android:text="@string/tanggaltempo"
         android:textAlignment="center"
         android:textSize="20sp"

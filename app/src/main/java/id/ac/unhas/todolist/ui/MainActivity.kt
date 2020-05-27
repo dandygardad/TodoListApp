@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,19 +36,35 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
         list.adapter = todolistAdapter
 
         todolistViewModel = ViewModelProvider(this).get(TodolistViewModel::class.java)
-        todolistViewModel.getTodos().observe(this, Observer {
-            todolistAdapter.setTodos(it)
+        todolistViewModel.getTodos().observe(this, Observer {todo ->
+            todo.let { noTodo(todo) }
         })
 
         new_fab.setOnClickListener {
-            resetSearchView()
+            reset()
             val intent = Intent(this@MainActivity, CreateActivity::class.java)
             startActivityForResult(intent, INSERT)
         }
     }
 
+    private fun noTodo(todoList: List<Todolist>){
+        todolistAdapter.setTodos(todoList)
+        if (todoList.isEmpty()){
+            list.visibility = View.GONE
+            todophoto.visibility = View.VISIBLE
+            quotes.visibility = View.VISIBLE
+            quotesby.visibility = View.VISIBLE
+        }
+        else{
+            list.visibility = View.VISIBLE
+            todophoto.visibility = View.GONE
+            quotes.visibility = View.GONE
+            quotesby.visibility = View.GONE
+        }
+    }
+
     override fun onViewClicked(todoList: Todolist) {
-        resetSearchView()
+        reset()
         val intent = Intent(this@MainActivity, UpdateActivity::class.java)
         intent.putExtra(Constants.OBJECT, todoList)
         startActivityForResult(intent, UPDATE)
@@ -119,11 +136,11 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
     }
 
     override fun onBackPressed() {
-        resetSearchView()
+        reset()
         super.onBackPressed()
     }
 
-    private fun resetSearchView() {
+    private fun reset() {
         if (!searchView.isIconified) {
             searchView.isIconified = true
             return

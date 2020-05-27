@@ -8,12 +8,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@android:color/holo_green_light">
-
+            android:background="@android:color/holo_orange_light">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <TextView
                     android:id="@+id/time_update"
                     android:layout_width="match_parent"
@@ -23,7 +21,8 @@
                     android:padding="7dp"
                     android:textStyle="bold"
                     android:text="@string/judulUpdate"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:fontFamily="@font/selawksb"/>
 
                 <TextView
                     android:id="@+id/time_created"
@@ -32,7 +31,8 @@
                     android:padding="7dp"
                     android:text="@string/judulBuat"
                     android:textStyle="bold"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:fontFamily="@font/selawksb"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -43,6 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="textEnd"
+                    android:fontFamily="@font/selawk"
                     android:layout_toRightOf="@id/view_waktu_dibuat"
                     android:paddingRight="7dp"
                     android:text="@string/waktuupdate"
@@ -54,10 +55,15 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="7dp"
                     android:paddingBottom="4dp"
+                    android:fontFamily="@font/selawk"
                     android:text="@string/waktudibuat"
                     android:textSize="13sp" />
             </RelativeLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="4dp"
+                android:background="#000000"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,6 +71,7 @@
                 android:id="@+id/title_todo"
                 android:text="@string/title"
                 android:textColor="@android:color/black"
+                android:fontFamily="@font/selawkb"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -74,14 +81,22 @@
                 android:layout_height="wrap_content"
                 android:padding="13dp"
                 android:text="@string/isinya"
-                android:textColor="@android:color/black" />
+                android:fontFamily="@font/selawk"
+                android:textColor="@android:color/black"/>
+            <View
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:layout_height="4dp"
+                android:background="#000000"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:paddingLeft="13dp"
+                android:textColor="@android:color/black"
                 android:text="@string/batas"
+                android:fontFamily="@font/selawksb"
                 android:textStyle="bold"/>
 
             <TextView
@@ -89,12 +104,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="21dp"
+                android:fontFamily="@font/selawk"
+                android:textColor="@android:color/black"
                 android:text="@string/tanggaldanwaktu" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:id="@+id/view_jatuh_waktu"
+                android:fontFamily="@font/selawk"
                 android:paddingLeft="21dp"/>
 
             <ImageView

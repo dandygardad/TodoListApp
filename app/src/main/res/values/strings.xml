@@ -19,4 +19,6 @@
     <string name="judulBuat">Tanggal Dibuat :</string>
     <string name="sortingdibuat">Sort Tanggal Dibuat</string>
     <string name="sortingjatuhtempo">Sort Tanggal Jatuh Tempo</string>
+    <string name="quote">"Life is what happens to you while you\'re busy making other plans".</string>
+    <string name="byquotes">- John Lennon</string>
 </resources>
