@@ -19,9 +19,9 @@ class AlarmReceiver : BroadcastReceiver(){
     }
 
     override fun onReceive(context: Context, intent: Intent) {
+        val remindID =  ID_REMINDER
         val message = intent.getStringExtra(EXTRA_MESSAGE) as String
         val title = "Reminder ToDo List"
-        val remindID =  ID_REMINDER
         showAlarmNotification(context, title, message, remindID)
     }
 
@@ -30,22 +30,27 @@ class AlarmReceiver : BroadcastReceiver(){
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
 
-        val pendingIntent = PendingIntent.getBroadcast(context, ID_REMINDER, intent, 0)
+        val pendingIntent = PendingIntent.getBroadcast(context,
+            ID_REMINDER,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
         alarmManager.set(AlarmManager.RTC_WAKEUP, waktu, pendingIntent)
     }
 
     private fun showAlarmNotification(context: Context, title: String, message: String, remindID: Int) {
         val idChannel = "Channel"
         val nameChannel = "Notification ToDoList"
-        val notificationManagerCompat = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManagerCompat =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val builder : NotificationCompat.Builder
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notifChannel = NotificationChannel(idChannel, nameChannel, NotificationManager.IMPORTANCE_DEFAULT)
+            val notifChannel = NotificationChannel(idChannel, nameChannel, NotificationManager.IMPORTANCE_HIGH)
             notifChannel.enableVibration(true)
             notifChannel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
             notificationManagerCompat.createNotificationChannel(notifChannel)
             builder = NotificationCompat.Builder(context, idChannel)
+                .setChannelId(idChannel)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -55,6 +60,7 @@ class AlarmReceiver : BroadcastReceiver(){
         }
         else{
             builder = NotificationCompat.Builder(context, idChannel)
+                .setChannelId(idChannel)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
@@ -64,5 +70,4 @@ class AlarmReceiver : BroadcastReceiver(){
         }
         notificationManagerCompat.notify(remindID, builder.build())
     }
-
 }

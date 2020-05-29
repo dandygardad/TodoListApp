@@ -1,5 +1,7 @@
 package id.ac.unhas.todolist.ui
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -55,24 +57,46 @@ class CreateActivity : AppCompatActivity() {
     private fun saveTodo() {
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
         val id = if (todoList != null) todoList?.id else null
-        val title = editTitle.text.toString()
-        val todo = Todolist(
-            id = id,
-            title = editTitle.text.toString(),
-            todo = editIsi.text.toString(),
-            tempo = waktuUnix,
-            tempoTanggal = tanggal_tempo.text.toString(),
-            waktuDibuat = currentTimeToLong(),
-            waktuDibuatString = sdf.format(Date()),
-            waktuUpdate = "",
-            judulWaktuUpdate = ""
-        )
-        val intent = Intent()
-        intent.putExtra(Constants.OBJECT, todo)
-        setResult(RESULT_OK, intent)
-        alarmReceiver.setReminder(this,
-            waktuUnix - 3600 * 1000,
-            "Untuk "+title+" akan mulai sebentar lagi")
-        finish()
+        if(editTitle.text.toString() != "" && editIsi.text.toString() != "" && tanggal_tempo.text.toString() != "Tanggal dan Waktu Tidak Diset") {
+
+            val todo = Todolist(
+                id = id,
+                title = editTitle.text.toString(),
+                todo = editIsi.text.toString(),
+                tempo = waktuUnix,
+                tempoTanggal = tanggal_tempo.text.toString(),
+                waktuDibuat = currentTimeToLong(),
+                waktuDibuatString = sdf.format(Date()),
+                waktuUpdate = "",
+                judulWaktuUpdate = ""
+            )
+            val intent = Intent()
+            intent.putExtra(Constants.OBJECT, todo)
+            setResult(RESULT_OK, intent)
+            alarmReceiver.setReminder(
+                this,
+                waktuUnix - 3600 * 1000,
+                "Ada To Do yang akan mulai sebentar lagi"
+            )
+            finish()
+        }
+        else{
+            var dialog: AlertDialog
+            val builder = AlertDialog.Builder(this)
+
+            builder.setTitle("Error")
+            builder.setMessage("Note masih kosong!")
+
+            val dialogHapus = DialogInterface.OnClickListener{ _, which ->
+                when(which){
+                    DialogInterface.BUTTON_NEGATIVE -> ""
+                }
+            }
+
+            builder.setNegativeButton("TIDAK", dialogHapus)
+
+            dialog = builder.create()
+            dialog.show()
+        }
     }
 }
