@@ -60,6 +60,7 @@ class UpdateActivity : AppCompatActivity() {
 
     private fun saveTodo(todoList: Todolist) {
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
+        val title = editTitleUpdate.text.toString()
         todoList.title =  editTitleUpdate.text.toString()
         todoList.todo = editIsiUpdate.text.toString()
         todoList.tempo = waktuUnix
@@ -72,7 +73,7 @@ class UpdateActivity : AppCompatActivity() {
         setResult(RESULT_OK, intent)
         alarmReceiver.setReminder(this,
             waktuUnix - 3600 * 1000,
-            "Sudah mau imsak")
+            "Untuk "+title+" akan mulai sebentar lagi")
         finish()
     }
 }
