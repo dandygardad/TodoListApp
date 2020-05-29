@@ -86,7 +86,7 @@ class UpdateActivity : AppCompatActivity() {
             val builder = AlertDialog.Builder(this)
 
             builder.setTitle("Error")
-            builder.setMessage("Ada data masih sama!")
+            builder.setMessage("Ada data masih sama seperti sebelumnya!")
 
             val dialogHapus = DialogInterface.OnClickListener{ _, which ->
                 when(which){
@@ -94,7 +94,7 @@ class UpdateActivity : AppCompatActivity() {
                 }
             }
 
-            builder.setNegativeButton("TIDAK", dialogHapus)
+            builder.setNegativeButton("OKE", dialogHapus)
 
             dialog = builder.create()
             dialog.show()

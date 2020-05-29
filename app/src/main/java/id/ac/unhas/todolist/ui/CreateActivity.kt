@@ -57,7 +57,9 @@ class CreateActivity : AppCompatActivity() {
     private fun saveTodo() {
         val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
         val id = if (todoList != null) todoList?.id else null
-        if(editTitle.text.toString() != "" && editIsi.text.toString() != "" && tanggal_tempo.text.toString() != "Tanggal dan Waktu Tidak Diset") {
+        if(editTitle.text.toString() != "" &&
+            editIsi.text.toString() != "" &&
+            tanggal_tempo.text.toString() != "Tanggal dan Waktu Tidak Diset") {
 
             val todo = Todolist(
                 id = id,
@@ -93,7 +95,7 @@ class CreateActivity : AppCompatActivity() {
                 }
             }
 
-            builder.setNegativeButton("TIDAK", dialogHapus)
+            builder.setNegativeButton("OKE", dialogHapus)
 
             dialog = builder.create()
             dialog.show()
