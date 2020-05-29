@@ -1,7 +1,5 @@
 package id.ac.unhas.todolist.ui
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,10 +34,9 @@ class TodolistAdapter(todoEvents: TodoEvents) : RecyclerView.Adapter<TodolistAda
             itemView.title_todo.text = todo.title
             itemView.isi_todo.text = todo.todo
             itemView.view_jatuh_tanggal.text = todo.tempoTanggal
-            itemView.view_jatuh_waktu.text = todo.tempoWaktu
             itemView.view_waktu_dibuat.text = todo.waktuDibuatString
             itemView.view_waktu_update.text = todo.waktuUpdate
-            itemView.time_update.text = todo.judulWaktuUpdate.toString()
+            itemView.time_update.text = todo.judulWaktuUpdate
 
             itemView.delete_button.setOnClickListener {
                 listener.showDialog(todo)

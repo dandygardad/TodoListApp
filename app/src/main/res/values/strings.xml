@@ -8,17 +8,15 @@
     <string name="search">Search</string>
     <string name="editing">Edit</string>
     <string name="create_todo">Buat</string>
-    <string name="tanggaltempo">Tanggal Tidak Diset</string>
-    <string name="waktutempo">Waktu Tidak Diset</string>
     <string name="batas">"Jatuh Tempo : "</string>
     <string name="tanggaldanwaktu">Tanggal dan Waktu</string>
     <string name="waktudibuat">Waktu Dibuat</string>
     <string name="judulTanggalTempo">Tanggal jatuh tempo :</string>
     <string name="waktuupdate">Waktu Update</string>
-    <string name="judulUpdate">Tanggal Update :</string>
-    <string name="judulBuat">Tanggal Dibuat :</string>
+    <string name="judulBuat">Dibuat</string>
     <string name="sortingdibuat">Sort Tanggal Dibuat</string>
     <string name="sortingjatuhtempo">Sort Tanggal Jatuh Tempo</string>
     <string name="quote">"Life is what happens to you while you\'re busy making other plans".</string>
     <string name="byquotes">- John Lennon</string>
+    <string name="belumset">Tanggal dan Waktu Tidak Diset</string>
 </resources>

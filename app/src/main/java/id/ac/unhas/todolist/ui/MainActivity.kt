@@ -86,8 +86,6 @@ class MainActivity : AppCompatActivity(), TodolistAdapter.TodoEvents {
         }
     }
 
-
-
     override fun onViewClicked(todoList: Todolist) {
         reset()
         val intent = Intent(this@MainActivity, UpdateActivity::class.java)

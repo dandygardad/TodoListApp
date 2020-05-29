@@ -20,7 +20,6 @@
                     android:layout_toRightOf="@id/time_created"
                     android:padding="7dp"
                     android:textStyle="bold"
-                    android:text="@string/judulUpdate"
                     android:textSize="12sp"
                     android:fontFamily="@font/selawksb"/>
 
@@ -107,14 +106,6 @@
                 android:fontFamily="@font/selawk"
                 android:textColor="@android:color/black"
                 android:text="@string/tanggaldanwaktu" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:id="@+id/view_jatuh_waktu"
-                android:fontFamily="@font/selawk"
-                android:paddingLeft="21dp"/>
 
             <ImageView
                 android:id="@+id/delete_button"

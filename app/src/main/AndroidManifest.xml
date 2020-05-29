@@ -18,6 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.CreateActivity" />
+        <receiver
+            android:name=".utilities.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
     </application>
 
 </manifest>

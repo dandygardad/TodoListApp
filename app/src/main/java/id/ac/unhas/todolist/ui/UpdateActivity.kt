@@ -7,18 +7,17 @@ import android.view.Menu
 import android.view.MenuItem
 import id.ac.unhas.todolist.R
 import id.ac.unhas.todolist.db.todolist.Todolist
+import id.ac.unhas.todolist.utilities.AlarmReceiver
 import id.ac.unhas.todolist.utilities.Constants
 import id.ac.unhas.todolist.utilities.Constants.waktuUnix
-import kotlinx.android.synthetic.main.activity_create.editIsi
-import kotlinx.android.synthetic.main.activity_create.editTitle
-import kotlinx.android.synthetic.main.activity_create.tanggal_tempo
-import kotlinx.android.synthetic.main.activity_create.waktu_tempo
+import kotlinx.android.synthetic.main.activity_update.*
 import java.text.SimpleDateFormat
 import java.util.*
 
 class UpdateActivity : AppCompatActivity() {
 
     private var todoList: Todolist? = null
+    private lateinit var alarmReceiver : AlarmReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,21 +29,18 @@ class UpdateActivity : AppCompatActivity() {
             this.todoList = todoList
             prePopulateData(todoList)
         }
-        tanggal_tempo.setOnClickListener {
-            Constants.showDatePickerDialog(this, tanggal_tempo)
+        tanggal_tempoUpdate.setOnClickListener {
+            Constants.showDateTimePicker(this, tanggal_tempoUpdate)
         }
 
-        waktu_tempo.setOnClickListener {
-            Constants.showTimePickerDialog(this,waktu_tempo)
-        }
         title = getString(R.string.editing)
+        alarmReceiver = AlarmReceiver()
     }
 
     private fun prePopulateData(todoList: Todolist) {
-        editTitle.setText(todoList.title)
-        editIsi.setText(todoList.todo)
-        waktu_tempo.setText(todoList.tempoWaktu)
-        tanggal_tempo.setText(todoList.tempoTanggal)
+        editTitleUpdate.setText(todoList.title)
+        editIsiUpdate.setText(todoList.todo)
+        tanggal_tempoUpdate.setText(todoList.tempoTanggal)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -56,32 +52,27 @@ class UpdateActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             R.id.save_todo -> {
-                saveTodo()
+                todoList?.let { saveTodo(it) }
             }
         }
         return true
     }
 
-    private fun saveTodo() {
-        val sdf = SimpleDateFormat("dd/M/yyyy HH:mm")
-        val id = if (todoList != null) todoList?.id else null
-        val todo = todoList?.waktuDibuat?.let {
-            Todolist(
-                id = id,
-                title = editTitle.text.toString(),
-                todo = editIsi.text.toString(),
-                tempo = waktuUnix,
-                tempoTanggal = tanggal_tempo.text.toString(),
-                tempoWaktu = waktu_tempo.text.toString(),
-                waktuDibuat = it,
-                waktuDibuatString = todoList!!.waktuDibuatString,
-                waktuUpdate = sdf.format(Date()),
-                judulWaktuUpdate = "Tanggal Update :"
-            )
-        }
+    private fun saveTodo(todoList: Todolist) {
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
+        todoList.title =  editTitleUpdate.text.toString()
+        todoList.todo = editIsiUpdate.text.toString()
+        todoList.tempo = waktuUnix
+        todoList.tempoTanggal = tanggal_tempoUpdate.text.toString()
+        todoList.waktuUpdate = sdf.format(Date())
+        todoList.judulWaktuUpdate = "Diubah"
+
         val intent = Intent()
-        intent.putExtra(Constants.OBJECT, todo)
+        intent.putExtra(Constants.OBJECT, todoList)
         setResult(RESULT_OK, intent)
+        alarmReceiver.setReminder(this,
+            waktuUnix - 3600 * 1000,
+            "Sudah mau imsak")
         finish()
     }
 }

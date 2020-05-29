@@ -12,43 +12,28 @@ object Constants{
     const val INSERT = 1
     const val UPDATE = 2
     var waktuUnix: Long = 0
+    val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
 
-    fun showDatePickerDialog(context: Context, view: TextView) {
+    fun showDateTimePicker(context: Context, view: TextView) {
         val calendarDate = Calendar.getInstance()
+        val yearGet = calendarDate.get(Calendar.YEAR)
+        val monthGet = calendarDate.get(Calendar.MONTH)
+        val dayGet = calendarDate.get(Calendar.DAY_OF_MONTH)
+        val hourGet = calendarDate.get(Calendar.HOUR_OF_DAY)
+        val minuteGet = calendarDate.get(Calendar.MINUTE)
         DatePickerDialog(
             context,
             DatePickerDialog.OnDateSetListener { _, tahun_muncul, bulan_muncul, hari_muncul ->
-                val format = "dd/M/yy"
-                calendarDate.set(Calendar.YEAR, tahun_muncul)
-                calendarDate.set(Calendar.MONTH, bulan_muncul)
-                calendarDate.set(Calendar.DAY_OF_MONTH, hari_muncul)
-                val sdf = SimpleDateFormat(format, Locale.US)
-                view.text = (sdf.format(calendarDate.time))
-                waktuUnix = calendarDate.getTimeInMillis() / 1000
+                TimePickerDialog(context, TimePickerDialog.OnTimeSetListener { _, jam, menit ->
+                    val calendar = Calendar.getInstance()
+                    calendar.set(tahun_muncul, bulan_muncul, hari_muncul, jam, menit)
+                    view.setText(sdf.format(calendar.time))
+                    waktuUnix = calendar.getTimeInMillis()
+                }, hourGet, minuteGet, true).show()
             },
-            calendarDate.get(Calendar.YEAR),
-            calendarDate.get(Calendar.MONTH),
-            calendarDate.get(Calendar.DAY_OF_MONTH)
-
-        )
-            .show()
-    }
-
-    fun showTimePickerDialog(context: Context, view: TextView) {
-        val calendar = Calendar.getInstance()
-        calendar.get(Calendar.HOUR_OF_DAY)
-        calendar.get(Calendar.MINUTE)
-
-        TimePickerDialog (
-            context,
-            TimePickerDialog.OnTimeSetListener { _, jam, menit ->
-                calendar.set(Calendar.HOUR_OF_DAY, jam)
-                calendar.set(Calendar.MINUTE, menit)
-                view.setText(SimpleDateFormat("HH:mm").format(calendar.time))
-        },
-            calendar.get(Calendar.HOUR_OF_DAY),
-            calendar.get(Calendar.MINUTE),
-            true)
-            .show()
+            yearGet,
+            monthGet,
+            dayGet
+        ).show()
     }
 }

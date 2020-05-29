@@ -13,21 +13,19 @@ data class Todolist(
     @ColumnInfo(name = "id")
     val id: Int? = null,
     @ColumnInfo(name = "title")
-    val title: String,
+    var title: String,
     @ColumnInfo(name = "todo")
-    val todo: String,
-    @ColumnInfo(name = "tempo")
-    val tempo: Long,
-    @ColumnInfo(name = "tempoTanggal")
-    val tempoTanggal: String,
-    @ColumnInfo(name = "tempoWaktu")
-    val tempoWaktu: String,
-    @ColumnInfo(name = "waktuDibuat")
+    var todo: String,
+    @ColumnInfo(name = "tempo_millis")
+    var tempo: Long,
+    @ColumnInfo(name = "tempo_tanggal")
+    var tempoTanggal: String,
+    @ColumnInfo(name = "waktu_dibuat_millis")
     val waktuDibuat: Long,
-    @ColumnInfo(name = "waktuDibuatString")
+    @ColumnInfo(name = "waktu_dibuat")
     val waktuDibuatString: String,
-    @ColumnInfo(name = "waktuUpdate")
-    val waktuUpdate: String,
-    @ColumnInfo(name = "judulWaktuUpdate")
-    val judulWaktuUpdate: String
+    @ColumnInfo(name = "waktu_update")
+    var waktuUpdate: String,
+    @ColumnInfo(name = "update_or_not")
+    var judulWaktuUpdate: String
 ) : Parcelable
