@@ -12,7 +12,6 @@ import id.ac.unhas.todolist.db.todolist.Todolist
 import id.ac.unhas.todolist.utilities.AlarmReceiver
 import id.ac.unhas.todolist.utilities.Constants
 import id.ac.unhas.todolist.utilities.Constants.waktuUnix
-import kotlinx.android.synthetic.main.activity_create.*
 import kotlinx.android.synthetic.main.activity_update.*
 import java.text.SimpleDateFormat
 import java.util.*
